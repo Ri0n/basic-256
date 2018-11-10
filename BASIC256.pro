@@ -10,7 +10,7 @@ DEPENDPATH					+=	.
 INCLUDEPATH					+=	.
 QMAKE_CXXFLAGS				+=	-g
 QMAKE_CXXFLAGS				+=	-std=c++11
-CONFIG						+=	 qt debug_and_release
+CONFIG						+=	 qt debug_and_release link_pkgconfig
 OBJECTS_DIR					=	tmp/obj
 MOC_DIR						=	tmp/moc
 
@@ -55,7 +55,7 @@ win32 {
 
 	## TTS Option 2 - use the espeak library
 	DEFINES					+=	ESPEAK
-	LIBS					+=	-lespeak
+	LIBS					+=	-lespeak-ng
 
 	########
 	# Sound class - How Sound statement works
@@ -83,9 +83,10 @@ unix:!macx {
 	#DEFINES				+=	ESPEAK_EXECUTE
 
 	## TTS Option 2 - use the espeak library
-	DEFINES					+=	ESPEAK
-	INCLUDEPATH				+=	/usr/include/espeak
-	LIBS					+=	-lespeak
+	PKGCONFIG += espeak-ng
+	# DEFINES					+=	ESPEAK
+	# INCLUDEPATH				+=	/usr/include/espeak
+	# LIBS					+=	-lespeak
 
 	LIBS					+=	-lm
 
