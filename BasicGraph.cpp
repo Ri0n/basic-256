@@ -18,6 +18,7 @@
 
 
 #include <iostream>
+#include <cmath>
 
 #include <QClipboard>
 #include <QMutex>
