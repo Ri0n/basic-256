@@ -85,8 +85,6 @@ unix:!macx {
 	## TTS Option 2 - use the espeak library
 	PKGCONFIG += espeak-ng
 	DEFINES					+=	ESPEAK
-	# INCLUDEPATH				+=	/usr/include/espeak
-	# LIBS					+=	-lespeak
 
 	LIBS					+=	-lm
 
@@ -97,24 +95,27 @@ unix:!macx {
 	INCLUDEPATH				+=	QtMultimediaKit
 	INCLUDEPATH				+=	QtMobility
 
-
+	isEmpty(PREFIX) {
+		PREFIX = /usr
+	}
+	DEFINES                 += FS_PREFIX=$$PREFIX
 	########
 	# rules for make install
 	########
 	exampleFiles.files		=	./Examples
-	exampleFiles.path		=	/usr/share/basic256
+	exampleFiles.path		=	$$PREFIX/share/basic256
 	INSTALLS				+=	exampleFiles
 
 	helpHTMLFiles.files		=	./wikihelp/help
-	helpHTMLFiles.path		=	/usr/share/basic256
+	helpHTMLFiles.path		=	$$PREFIX/share/basic256
 	INSTALLS				+=	helpHTMLFiles
 
 	transFiles.files		=	./Translations/*.qm
-	transFiles.path			=	/usr/share/basic256
+	transFiles.path			=	$$PREFIX/share/basic256
 	INSTALLS				+=	transFiles
 
 	# main program executable
-	target.path				=	/usr/bin
+	target.path				=	$$PREFIX/bin
 	INSTALLS				+=	target
 
 }

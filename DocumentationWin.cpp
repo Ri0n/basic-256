@@ -22,6 +22,9 @@
 #include "MainWindow.h"
 #include "BasicIcons.h"
 
+#define STR_HELPER(s) #s
+#define STR(s) STR_HELPER(s)
+
 extern BasicIcons *basicIcons;
 
 DocumentationWin::DocumentationWin (QWidget * parent){
@@ -47,6 +50,7 @@ DocumentationWin::DocumentationWin (QWidget * parent){
     docs->setOpenExternalLinks(true);
     docs->setSearchPaths(QStringList()
                          <<	QApplication::applicationDirPath() + "/help/"
+                         << STR(FS_PREFIX) "/share/basic256/help/"
                          <<	"/usr/share/basic256/help/"
                          <<	"/usr/local/share/basic256/help/"
                          <<	"./"

@@ -40,6 +40,8 @@
 #include "MainWindow.h"
 #include "BasicEdit.h"
 
+#define STR_HELPER(s) #s
+#define STR(s) STR_HELPER(s)
 
 //Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
 
@@ -153,7 +155,8 @@ int main(int argc, char *argv[]) {
     kbTranslator.load("basic256_" + localecode, qApp->applicationDirPath() + "/Translations/");
 #else
     bool ok;
-    ok = kbTranslator.load("basic256_" + localecode, "/usr/share/basic256/");
+    ok = kbTranslator.load("basic256_" + localecode, STR(FS_PREFIX) "/share/basic256/");
+    if (!ok) ok = kbTranslator.load("basic256_" + localecode, "/usr/share/basic256/");
     if (!ok) ok = kbTranslator.load("basic256_" + localecode, "/usr/local/share/basic256/");  // alternative location
 #endif
     qapp.installTranslator(&kbTranslator);
