@@ -25,7 +25,7 @@
 #include "md5.h"
 
 #ifdef ESPEAK
-#include <speak_lib.h>
+#include <espeak-ng/speak_lib.h>
 #endif
 
 PreferencesWin::PreferencesWin (QWidget * parent, bool showAdvanced)
