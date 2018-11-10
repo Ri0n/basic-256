@@ -60,7 +60,7 @@
 #endif
 
 #ifdef ESPEAK
-#include <speak_lib.h>
+#include <espeak-ng/speak_lib.h>
 #endif
 
 #ifdef ANDROID
@@ -165,7 +165,7 @@ RunController::speakWords(QString text) {
     int samplerate = espeak_Initialize(AUDIO_OUTPUT_SYNCH_PLAYBACK,0,(char *) QFileInfo(QCoreApplication::applicationFilePath()).absolutePath().toUtf8().data(),0);
 #else
     // use default path for espeak-data
-    int samplerate = espeak_Initialize(AUDIO_OUTPUT_SYNCH_PLAYBACK,0,NULL,0);
+    int samplerate = espeak_Initialize(AUDIO_OUTPUT_PLAYBACK,0,NULL,0);
 #endif
     if (samplerate!=-1) {
         QString voicename = settings.value(SETTINGSESPEAKVOICE,SETTINGSESPEAKVOICEDEFAULT).toString();
@@ -196,7 +196,7 @@ RunController::speakWords(QString text) {
     // easy espeak implementation when all else fails
     // mutex handled by executeSystem
     text.replace("\""," quote ");
-    text.prepend("espeak \"");
+    text.prepend("espeak-ng \"");
     text.append("\"");
     executeSystem(text);
 #endif

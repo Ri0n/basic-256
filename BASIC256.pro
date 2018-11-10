@@ -79,12 +79,12 @@ unix:!macx {
 	########
 	# uncomment one of the options
 
-	## TTS Option 1 - ececute 'espak' command to speak
+	## TTS Option 1 - ececute 'espeak-ng' command to speak
 	#DEFINES				+=	ESPEAK_EXECUTE
 
 	## TTS Option 2 - use the espeak library
 	PKGCONFIG += espeak-ng
-	# DEFINES					+=	ESPEAK
+	DEFINES					+=	ESPEAK
 	# INCLUDEPATH				+=	/usr/include/espeak
 	# LIBS					+=	-lespeak
 
