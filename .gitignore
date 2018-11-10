@@ -1,0 +1,10 @@
+.qmake.stash
+LEX/basicParse.tab.c
+LEX/basicParse.tab.h
+LEX/lex.yy.c
+Makefile
+Makefile.Debug
+Makefile.Release
+basic256
+release/
+tmp
