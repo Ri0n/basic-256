@@ -118,6 +118,13 @@ unix:!macx {
 	target.path				=	$$PREFIX/bin
 	INSTALLS				+=	target
 
+	desktopFile.extra       =   sed -e \"s|Icon=.*|Icon=$${PREFIX}/share/pixmaps/basic256.xpm|\" $${PWD}/debian/basic256.desktop > $$PREFIX/share/applications/basic256.desktop
+	desktopFile.path        =   $$PREFIX/share/applications
+	INSTALLS                +=  desktopFile
+
+	iconFile.files          = ./debian/basic256.xpm
+	iconFile.path           = $$PREFIX/share/pixmaps
+	INSTALLS                += iconFile
 }
 
 macx {
